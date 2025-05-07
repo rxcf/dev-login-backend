@@ -70,9 +70,17 @@
                 document.getElementById('errorMessage').innerHTML = 'Username or Password must be at least 4 characters long';
                 return;
             } else {
+                localStorage.setItem('growId', uName);
+
+                const remember = document.getElementById('rememberPassword').checked;
+                if (remember) {
+                    localStorage.setItem('rememberedPassword', uPass);
+                } else {
+                    localStorage.removeItem('rememberedPassword');
+                }
+
                 loginForm.submit();
-                localStorage.setItem('growId', document.getElementById('loginGrowId').value);
-            }
+            }            
         })
         document.getElementById('toggleLogPassword').addEventListener('click', function () {
             const LpasswordField = document.getElementById('loginPassword')
