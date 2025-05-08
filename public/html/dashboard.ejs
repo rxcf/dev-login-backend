@@ -51,12 +51,17 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            if (localStorage.getItem('growId')) {
-                document.getElementById('loginGrowId').value = localStorage.getItem('growId');
+            const growId = localStorage.getItem('growId');
+            const rememberedPassword = localStorage.getItem('rememberedPassword');
+
+            if (growId) {
+                document.getElementById('loginGrowId').value = growId;
             }
 
-            const loginGrowId = document.getElementById('loginGrowId').value
-            const loginPassword = document.getElementById('loginPassword').value
+            if (rememberedPassword) {
+                document.getElementById('loginPassword').value = rememberedPassword;
+                document.getElementById('rememberPassword').checked = true;
+            }
         });
         document.getElementById('loginButton').addEventListener('click', function (event) {
             event.preventDefault();
